@@ -1,0 +1,30 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE authors (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name TEXT, last_name TEXT);
+
+INSERT INTO authors (first_name, last_name) VALUES ('Colleen', 'Hoover');
+INSERT INTO authors (first_name, last_name) VALUES ('Delia','Owens'); 
+INSERT INTO authors (first_name, last_name) VALUES ('Taylor','Jenkins-Reid');
+INSERT INTO authors (first_name, last_name) VALUES ('James', 'Clear');
+INSERT INTO authors (first_name, last_name) VALUES ('Shea', 'Ernshaw');
+
+CREATE TABLE bestselling_books (id INTEGER PRIMARY KEY AUTOINCREMENT, author_id INTEGER, title TEXT, publisher TEXT, pub_date NUMERIC, rank INTEGER);
+
+INSERT INTO bestselling_books (author_id,title, publisher, pub_date, rank) VALUES ('1','It Ends With Us', 'Simon and Schuster', '2016-08-02','1');
+INSERT INTO bestselling_books (author_id,title, publisher, pub_date, rank) VALUES ('1','Verity','Hachette Book Group', '2021-10-26','2');
+INSERT INTO bestselling_books (author_id,title, publisher, pub_date, rank) VALUES ('2','Where The Crawdads Sing', 'Penguin Group USA', '2021-03-21','3');
+INSERT INTO bestselling_books (author_id,title, publisher, pub_date, rank) VALUES ('1','Reminders of Him', 'Brilliance', '2022-01-18','5');
+INSERT INTO bestselling_books (author_id,title, publisher, pub_date, rank) VALUES ('1','November 9', 'Simon and Schuster', '2022-01-18','6');
+INSERT INTO bestselling_books (author_id,title, publisher, pub_date, rank) VALUES ('3','The Seven Husbands of Evelyn Hugo','Simon and Schuster', '2018-05-29','7');
+INSERT INTO bestselling_books (author_id,title, publisher,pub_date,rank) VALUES ('5','Long Live The Pumpkin Queen', 'Disney','2022-08-02','8');
+INSERT INTO bestselling_books (author_id,title, publisher,pub_date,rank) VALUES ('1','All Your Perfects', 'Simon and Schuster','2018-07-17','9');
+INSERT INTO bestselling_books (author_id,title, publisher,pub_date,rank) VALUES ('4','Atomic Habits', 'Penguin Group USA','2018-10-16','10');
+
+SELECT * FROM authors;
+
+SELECT authors.first_name, authors.last_name, bestselling_books.title, bestselling_books.rank 
+FROM authors
+JOIN bestselling_books
+ON authors.id
+=bestselling_books.author_id
+ORDER BY rank ASC;
